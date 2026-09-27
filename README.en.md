@@ -9,6 +9,8 @@ Two verified local patches for DeepSeek Harness (DSH) Web GUI. Full docs are in 
 
 **Install**: each patch ships an idempotent `apply.ps1` (with automatic `.bak-before-*` backups) and a `revert.ps1`.
 
+**Maintenance**: [`scripts/dsh-maintenance.ps1`](scripts/) — `-Check` reports progress on the upstream PR/discussions, `-Reapply` re-applies both patches after an upgrade, `-Revert` restores the originals. It detects which checkout the running host actually serves, so other npx cache copies are never touched.
+
 **Caveats**
 - Both patches edit published client bundles inside `node_modules`; a DSH or plugin upgrade overwrites them — re-run `apply.ps1`.
 - Only client bundles change; a browser page refresh is enough (no host restart).
