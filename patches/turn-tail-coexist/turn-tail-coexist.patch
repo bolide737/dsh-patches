@@ -1,0 +1,24 @@
+diff --git a/lib/client.js b/lib/client.js
+--- a/lib/client.js
++++ b/lib/client.js
+@@ function selectProducedFiles(owner)
+ 		function selectProducedFiles(owner) {
++			// [local patch · 共存] 本轮若有 present 交付（turn data 的 deliverables.presented
++			// 非空），本行不接管，让 @deepseek-ai/dsh-client-ui-deliverables 的交付卡片渲染。
++			// 回退：用同目录 client.js.bak-before-coexist / client-registry.js.bak-before-coexist 覆盖。
++			{
++				const _d = owner?.turn?.data?.get?.("deliverables");
++				if (Array.isArray(_d?.presented) && _d.presented.length > 0) return null;
++			}
+ 			const record = owner;
+ 			if (record === null || typeof record !== "object") return null;
+ 			const seq = typeof record.seq === "number" ? record.seq : Number.POSITIVE_INFINITY;
+
+diff --git a/lib/client-registry.js b/lib/client-registry.js
+--- a/lib/client-registry.js
++++ b/lib/client-registry.js
+@@ 同一函数（同源副本，需同样修改）
+ 		function selectProducedFiles(owner) {
++			{ const _d = owner?.turn?.data?.get?.("deliverables");
++			  if (Array.isArray(_d?.presented) && _d.presented.length > 0) return null; }
+ 			const record = owner;
