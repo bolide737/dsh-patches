@@ -1,0 +1,16 @@
+diff --git a/lib/client.js b/lib/client.js
+--- a/lib/client.js
++++ b/lib/client.js
+@@ function PresentedFileCard(...)
+ 			}),
+ 			(react_jsx_runtime.jsxs)("div", {
+ 				className: Deliverables_module_css_default.split,
+ 				children: [(react_jsx_runtime.jsx)("button", {
+ 					ref: previewRef,
+ 					type: "button",
+ 					className: Deliverables_module_css_default.open,
+ 					"aria-label": t("presented.previewButton", { name: file.path }),
+-					onClick: onPreview,
++					onClick: () => onAction("open"),
+ 					children: t("presented.action")
+ 				}), (react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Menu, {
