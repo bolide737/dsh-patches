@@ -9,6 +9,8 @@
 | [`patches/turn-tail-coexist`](patches/turn-tail-coexist/) | 装了侧边栏插件后，`present` 交付卡片**永不显示** | `dsh-better-sidebar/lib/client.js`、`lib/client-registry.js` |
 | [`patches/card-open-native`](patches/card-open-native/) | 交付卡片的「打开」按钮**只能在侧边栏预览**，想用系统默认程序打开 | `@deepseek-ai/dsh-client-ui-deliverables/lib/client.js` |
 
+另有 **一键维护脚本** [`scripts/dsh-maintenance.ps1`](scripts/)：`-Check` 查 GitHub 进展（PR #634 / Discussion #8059 / 通知）、`-Reapply` 升级后重打两个补丁、`-Revert` 一键回退。它会自动识别"宿主实际在服务的那份检出"，不会误改其它 npx 缓存副本。
+
 环境：DSH `0.1.5-rc.2`（npx 检出）、`dsh-better-sidebar@0.19.0`、Web GUI，Windows。
 
 ---
